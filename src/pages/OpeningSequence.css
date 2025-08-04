@@ -1,0 +1,114 @@
+.opening-sequence {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+.particles-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.opening-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  user-select: none;
+}
+
+.name-container {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.name-container:hover {
+  transform: scale(1.05);
+}
+
+.main-name {
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #f1f5f9, #cbd5e1, #3b82f6, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 
+    0 0 1rem rgba(59, 130, 246, 0.4),
+    0 0 2rem rgba(96, 165, 250, 0.3);
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  font-family: 'Poppins', sans-serif;
+  filter: drop-shadow(0 0 0.5rem rgba(59, 130, 246, 0.3));
+}
+
+.click-hint {
+  font-size: 1.125rem;
+  color: #cbd5e1;
+  margin-top: 2rem;
+  font-weight: 500;
+  opacity: 0.9;
+  animation: pulse 2s ease-in-out infinite;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 0 1rem rgba(59, 130, 246, 0.4);
+}
+
+.zoom-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoom-container .main-name {
+  white-space: nowrap;
+}
+
+
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+/* Always dark theme with enhanced effects */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-name {
+    font-size: clamp(2.5rem, 10vw, 6rem);
+  }
+  
+  .click-hint {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-name {
+    font-size: clamp(2rem, 12vw, 4rem);
+    letter-spacing: -0.01em;
+  }
+  
+  .click-hint {
+    font-size: 0.875rem;
+    margin-top: 1rem;
+  }
+} 
