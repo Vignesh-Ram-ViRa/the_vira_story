@@ -149,6 +149,51 @@
   }
 }
 
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .dock-outer {
+    /* Ensure dock is visible and accessible */
+    z-index: 150 !important;
+  }
+  
+  .dock-panel {
+    /* Make dock more prominent on mobile */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    background: var(--color-surface) !important;
+    border: 2px solid var(--color-border) !important;
+  }
+  
+  .dock-drag-handle {
+    /* Make drag handle more visible */
+    background: var(--color-primary) !important;
+    color: white !important;
+    opacity: 1 !important;
+    animation: pulse 2s infinite;
+  }
+  
+  .dock-item {
+    /* Larger touch targets for mobile */
+    width: 48px !important;
+    height: 48px !important;
+    border: 1px solid var(--color-border) !important;
+  }
+  
+  .dock-label {
+    /* Always show labels on mobile for better UX */
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: 0.7rem;
+    background: var(--color-surface) !important;
+    border: 1px solid var(--color-border) !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+}
+
 @media (max-width: 480px) {
   .dock-panel {
     gap: 0.5rem;

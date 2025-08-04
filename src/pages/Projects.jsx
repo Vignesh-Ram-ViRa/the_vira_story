@@ -7,7 +7,9 @@ import {
   VscTag,
   VscCode,
   VscStarFull,
-  VscEye
+  VscEye,
+  VscSearch,
+  VscClose
 } from 'react-icons/vsc';
 import { getLanguageContent } from '../utils/language';
 import './Projects.css';
@@ -15,16 +17,22 @@ import './Projects.css';
 const Projects = () => {
   const content = getLanguageContent();
   const projects = content.projects;
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
   const [hoveredProject, setHoveredProject] = useState(null);
 
-  // Get unique categories for filter
-  const categories = ['all', ...new Set(projects.list.map(project => project.category))];
-
-  // Filter projects based on selected category
-  const filteredProjects = selectedCategory === 'all' 
-    ? projects.list 
-    : projects.list.filter(project => project.category === selectedCategory);
+  // Filter projects based on search term
+  const filteredProjects = projects.list.filter(project => {
+    if (!searchTerm) return true;
+    
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      project.name.toLowerCase().includes(searchLower) ||
+      project.description.toLowerCase().includes(searchLower) ||
+      project.category.toLowerCase().includes(searchLower) ||
+      project.technologies.some(tech => tech.toLowerCase().includes(searchLower)) ||
+      project.year.toString().includes(searchLower)
+    );
+  });
 
   // Animation variants
   const containerVariants = {
@@ -133,179 +141,176 @@ const Projects = () => {
         </motion.p>
       </div>
 
-      {/* Category Filter */}
-      <motion.div 
-        className="projects-filter"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-      >
-        {categories.map((category) => (
-          <button
-            key={category}
-            className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
-            onClick={() => setSelectedCategory(category)}
-          >
-            {category === 'all' ? 'All Projects' : category}
-          </button>
-        ))}
-      </motion.div>
+             {/* Search Bar */}
+       <motion.div 
+         className="projects-search"
+         initial={{ opacity: 0, y: 20 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ delay: 0.6 }}
+       >
+         <div className="search-container">
+           <VscSearch className="search-icon" />
+           <input
+             type="text"
+             className="search-input"
+             placeholder="Search"
+             value={searchTerm}
+             onChange={(e) => setSearchTerm(e.target.value)}
+           />
+           <button
+             className={`search-clear ${searchTerm ? 'visible' : ''}`}
+             onClick={() => setSearchTerm('')}
+             title="Clear search"
+           >
+             <VscClose />
+           </button>
+         </div>
+       </motion.div>
 
-      {/* Projects Grid */}
-      <motion.div 
-        className="projects-container"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className="projects-grid">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className={`project-card ${project.featured ? 'featured' : ''}`}
-              variants={cardVariants}
-              whileHover="hover"
-              onHoverStart={() => setHoveredProject(project.id)}
-              onHoverEnd={() => setHoveredProject(null)}
-            >
-              {/* Project Image/Preview */}
-              <div className="project-image">
-                {project.image && (
-                  <img 
-                    src={project.image === project.link ? 
-                      `https://api.screenshotmachine.com/p?key=demo&url=${encodeURIComponent(project.link)}&dimension=1024x768` : 
-                      project.image
-                    }
-                    alt={project.name}
-                    loading="lazy"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
-                  />
-                )}
-                <div className="image-fallback" style={{ display: 'none' }}>
-                  <VscCode size={48} />
-                  <span>Project Preview</span>
-                </div>
-                
-                {/* Overlay with quick actions */}
-                <div className="project-overlay">
-                  <div className="overlay-actions">
-                    <button 
-                      className="action-btn primary"
-                      onClick={(e) => handleLiveClick(project.link, e)}
-                      title="View Live Site"
-                    >
-                      <VscLinkExternal />
-                      <span>Live Site</span>
-                    </button>
-                    <button 
-                      className="action-btn secondary"
-                      onClick={(e) => handleGitHubClick(project.github, e)}
-                      title="View Source Code"
-                    >
-                      <VscGithub />
-                      <span>Code</span>
-                    </button>
-                  </div>
-                </div>
+             {/* Results Count */}
+       {searchTerm && (
+         <motion.div 
+           className="search-results"
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ duration: 0.3 }}
+         >
+           <span className="results-text">
+             {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''} found
+             {searchTerm && ` for "${searchTerm}"`}
+           </span>
+         </motion.div>
+       )}
 
-                {/* Status Badge */}
-                <div className={`status-badge ${project.status}`}>
-                  {getStatusIcon(project.status)}
-                  <span>{getStatusLabel(project.status)}</span>
-                </div>
-
-                                 {/* Featured Badge */}
-                 {project.featured && (
-                   <div className="featured-badge">
-                     <VscStarFull />
-                     <span>Featured</span>
+       {/* Projects Grid */}
+       <motion.div 
+         className="projects-container"
+         variants={containerVariants}
+         initial="hidden"
+         animate="visible"
+       >
+         <div className="projects-grid">
+           {filteredProjects.length === 0 && searchTerm ? (
+             <motion.div 
+               className="no-results"
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.5 }}
+             >
+               <VscCode size={48} />
+               <h3>No projects found</h3>
+               <p>Try adjusting your search terms or clearing the search to see all projects.</p>
+               <button 
+                 className="clear-search-btn"
+                 onClick={() => setSearchTerm('')}
+               >
+                 <VscClose />
+                 Clear Search
+               </button>
+             </motion.div>
+           ) : (
+             filteredProjects.map((project, index) => (
+               <motion.div
+                 key={project.id}
+                 className={`project-card ${project.featured ? 'featured' : ''}`}
+                 variants={cardVariants}
+                 whileHover="hover"
+                 onHoverStart={() => setHoveredProject(project.id)}
+                 onHoverEnd={() => setHoveredProject(null)}
+               >
+                 {/* Project Image/Preview */}
+                 <div 
+                   className="project-image"
+                   onClick={(e) => handleLiveClick(project.link, e)}
+                   title="View Live Demo"
+                 >
+                   {project.image && (
+                     <img 
+                       src={project.image === project.link ? 
+                         `https://api.screenshotmachine.com/p?key=demo&url=${encodeURIComponent(project.link)}&dimension=1024x768` : 
+                         project.image
+                       }
+                       alt={project.name}
+                       loading="lazy"
+                       onError={(e) => {
+                         e.target.style.display = 'none';
+                         e.target.nextSibling.style.display = 'flex';
+                       }}
+                     />
+                   )}
+                   <div className="image-fallback" style={{ display: 'none' }}>
+                     <VscCode size={48} />
+                     <span>Project Preview</span>
                    </div>
-                 )}
-              </div>
+                   
+                   {/* GitHub Button */}
+                   <button 
+                     className="github-btn"
+                     onClick={(e) => handleGitHubClick(project.github, e)}
+                     title="View Source Code"
+                   >
+                     <VscGithub />
+                   </button>
 
-              {/* Project Content */}
-              <div className="project-content">
-                <div className="project-header">
-                  <h3 className="project-name">{project.name}</h3>
-                  <div className="project-meta">
-                    <span className="project-year">
-                      <VscCalendar />
-                      {project.year}
-                    </span>
-                    <span className="project-category">
-                      <VscTag />
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
+                   {/* Status Badge */}
+                   <div className={`status-badge ${project.status}`}>
+                     {getStatusIcon(project.status)}
+                     <span>{getStatusLabel(project.status)}</span>
+                   </div>
 
-                <p className="project-description">{project.description}</p>
+                   {/* Featured Badge */}
+                   {project.featured && (
+                     <div className="featured-badge" title="Featured Project">
+                       <VscStarFull />
+                     </div>
+                   )}
 
-                {/* Technologies */}
-                <div className="project-technologies">
-                  <div className="tech-list">
-                    {project.technologies.map((tech, index) => (
-                      <span key={index} className="tech-tag">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                   {/* Click hint overlay */}
+                   <div className="click-hint">
+                     <VscLinkExternal />
+                     <span>View Live Demo</span>
+                   </div>
+                 </div>
 
-                {/* Project Links */}
-                <div className="project-links">
-                  <button 
-                    className="project-link live"
-                    onClick={(e) => handleLiveClick(project.link, e)}
-                  >
-                    <VscLinkExternal />
-                    <span>Live Demo</span>
-                  </button>
-                  <button 
-                    className="project-link github"
-                    onClick={(e) => handleGitHubClick(project.github, e)}
-                  >
-                    <VscGithub />
-                    <span>GitHub</span>
-                  </button>
-                </div>
-              </div>
+                 {/* Project Content */}
+                 <div className="project-content">
+                   <div className="project-header">
+                     <h3 className="project-name">{project.name}</h3>
+                     <div className="project-meta">
+                       <span className="project-year">
+                         <VscCalendar />
+                         {project.year}
+                       </span>
+                       <span className="project-category">
+                         <VscTag />
+                         {project.category}
+                       </span>
+                     </div>
+                   </div>
 
-              {/* Hover Glow Effect */}
-              <div className="project-glow" />
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+                   <p className="project-description">{project.description}</p>
 
-      {/* Projects Summary */}
-      <motion.div 
-        className="projects-summary"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.0 }}
-      >
-        <div className="summary-card">
-          <h3 className="summary-title">Development Portfolio</h3>
-          <div className="summary-stats">
-            <div className="stat-item">
-              <span className="stat-number">{projects.list.length}</span>
-              <span className="stat-label">Total Projects</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-number">{projects.list.filter(p => p.featured).length}</span>
-              <span className="stat-label">Featured</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-number">{projects.list.filter(p => p.status === 'completed').length}</span>
-              <span className="stat-label">Completed</span>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+                   {/* Technologies */}
+                   <div className="project-technologies">
+                     <div className="tech-list">
+                       {project.technologies.map((tech, index) => (
+                         <span key={index} className="tech-tag">
+                           {tech}
+                         </span>
+                       ))}
+                     </div>
+                   </div>
+                 </div>
+
+                 {/* Hover Glow Effect */}
+                 <div className="project-glow" />
+               </motion.div>
+             ))
+           )}
+         </div>
+       </motion.div>
+
+      
     </div>
   );
 };
