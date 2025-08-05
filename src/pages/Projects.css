@@ -1,7 +1,7 @@
 /* Projects Page */
 .projects-page {
   padding: 2rem;
-  max-width: 1400px;
+  max-width: 87.5rem;
   margin: 0 auto;
   width: 100%;
   overflow-x: hidden; /* Prevent horizontal overflow */
@@ -44,7 +44,7 @@
 .projects-subtitle {
   font-size: 1.125rem;
   color: var(--color-text-secondary);
-  max-width: 600px;
+  max-width: 37.5rem;
   margin: 0 auto;
   line-height: 1.6;
   font-weight: 400;
@@ -62,7 +62,7 @@
 .search-container {
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 31.25rem;
   margin: 0 auto;
 }
 
@@ -219,7 +219,7 @@
 .no-results p {
   font-size: 1rem;
   margin: 0;
-  max-width: 400px;
+  max-width: 25rem;
   line-height: 1.5;
 }
 
@@ -267,7 +267,7 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 2rem;
   width: 100%;
 }
@@ -304,7 +304,7 @@
 .project-image {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 15rem;
   overflow: hidden;
   background: linear-gradient(135deg, var(--color-surface), var(--color-surface-elevated));
   cursor: pointer;
@@ -348,8 +348,8 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.8);
   color: white;
@@ -361,7 +361,7 @@
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   z-index: 5; /* Highest priority */
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .github-btn:hover {
@@ -389,12 +389,12 @@
   transition: opacity 0.3s ease;
   backdrop-filter: blur(4px);
   z-index: 1; /* Lowest priority - behind badges */
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
 }
 
 .click-hint span {
-  font-size: 14px;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -442,8 +442,8 @@
   position: absolute;
   bottom: 1rem; /* Position at bottom right for better placement */
   right: 1rem;
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   background: rgba(var(--color-accent-rgb), 0.9);
   color: white;
@@ -455,7 +455,7 @@
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.2);
   z-index: 4; /* Above click-hint overlay */
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .featured-badge:hover {
@@ -555,8 +555,8 @@
 }
 
 .project-card:hover .project-glow {
-  width: 300px;
-  height: 300px;
+  width: 18.75rem;
+  height: 18.75rem;
   opacity: 0.1;
 }
 
@@ -818,12 +818,12 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
     gap: 1.5rem;
   }
   
   .project-image {
-    height: 200px;
+    height: 12.5rem;
   }
 }
 
@@ -913,11 +913,11 @@
   }
   
   .github-btn {
-    width: 44px;
-    height: 44px;
+    width: 2.75rem;
+    height: 2.75rem;
     top: 0.75rem;
     right: 0.75rem;
-    font-size: 18px;
+    font-size: 1.125rem;
   }
   
   .status-badge {
@@ -927,19 +927,19 @@
   }
   
   .featured-badge {
-    width: 44px;
-    height: 44px;
+    width: 2.75rem;
+    height: 2.75rem;
     bottom: 0.75rem;
-    font-size: 18px;
+    font-size: 1.125rem;
   }
   
   .click-hint {
-    font-size: 15px;
+    font-size: 0.9375rem;
     padding: 1rem;
   }
   
   .click-hint span {
-    font-size: 12px;
+    font-size: 0.75rem;
     margin-top: 0.5rem;
   }
 }
@@ -999,7 +999,7 @@
   }
   
   .project-image {
-    height: 160px;
+    height: 10rem;
   }
   
   .project-content {
@@ -1031,11 +1031,11 @@
   }
   
   .github-btn {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     top: 0.5rem;
     right: 0.5rem;
-    font-size: 16px;
+    font-size: 1rem;
   }
   
   .status-badge {
@@ -1045,19 +1045,19 @@
   }
   
   .featured-badge {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     bottom: 0.5rem;
-    font-size: 16px;
+    font-size: 1rem;
   }
   
   .click-hint {
-    font-size: 14px;
+    font-size: 0.875rem;
     padding: 0.75rem;
   }
   
   .click-hint span {
-    font-size: 11px;
+    font-size: 0.6875rem;
     margin-top: 0.375rem;
   }
   

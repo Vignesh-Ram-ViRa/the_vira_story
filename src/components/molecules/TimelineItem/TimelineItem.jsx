@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { VscCalendar, VscLocation, VscOrganization, VscAccount, VscCode, VscMortarBoard, VscBriefcase } from 'react-icons/vsc';
+import { VscCalendar, VscLocation, VscAccount, VscCode, VscMortarBoard, VscBriefcase } from 'react-icons/vsc';
 import './TimelineItem.css';
 
 /**
@@ -24,13 +24,14 @@ const TimelineItem = ({ experience, index, isLast }) => {
       }
     );
 
-    if (itemRef.current) {
-      observer.observe(itemRef.current);
+    const currentRef = itemRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (itemRef.current) {
-        observer.unobserve(itemRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);

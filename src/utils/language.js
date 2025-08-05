@@ -116,7 +116,7 @@ export const getCommon = () => {
   return languageContent.common;
 };
 
-export default {
+const languageUtils = {
   getLanguageContent,
   getText,
   getTexts,
@@ -128,4 +128,6 @@ export default {
   getFooter,
   getThemes,
   getCommon
-}; 
+};
+
+export default languageUtils; 

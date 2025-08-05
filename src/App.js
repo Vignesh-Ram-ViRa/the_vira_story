@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Career from './pages/Career';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
+import Certifications from './pages/Certifications';
 import About from './pages/About';
 
 import './App.css';
@@ -34,6 +35,7 @@ function App() {
             <Route path="/career" element={<Layout><Career /></Layout>} />
             <Route path="/skills" element={<Layout><Skills /></Layout>} />
             <Route path="/projects" element={<Layout><Projects /></Layout>} />
+            <Route path="/certifications" element={<Layout><Certifications /></Layout>} />
             <Route path="/about" element={<Layout><About /></Layout>} />
           </Routes>
     </div>

@@ -21,7 +21,7 @@ const hobbyData = {
     title: "Art Portfolio",
     description: "Freehand drawings and creative expressions",
     images: [
-      { id: 1, src: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=800&auto=format", title: "Portrait Study", medium: "Pencil on Paper" },
+      { id: 1, src: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=800&auto=format", title: "Sketch Placeholder", medium: "Pencil on Paper" },
       { id: 2, src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&auto=format", title: "Landscape Drawing", medium: "Charcoal" },
       { id: 3, src: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=800&auto=format", title: "Abstract Art", medium: "Mixed Media" },
       { id: 4, src: "https://images.unsplash.com/photo-1594736797933-d0c8c986d1e8?q=80&w=800&auto=format", title: "Character Study", medium: "Ink" },

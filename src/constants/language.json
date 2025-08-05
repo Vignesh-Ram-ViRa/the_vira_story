@@ -14,14 +14,118 @@
     "career": "Career", 
     "skills": "Skills",
     "projects": "Projects",
+    "certifications": "Certifications",
     "about": "About Me"
   },
   "openingSequence": {
     "clickMessage": "Click to enter"
   },
   "home": {
-    "welcome": "Welcome to my Portfolio",
-    "tagline": "Crafting Digital Excellence"
+    "hero": {
+      "greeting": "Hello, I'm",
+      "name": "Vignesh Ram",
+      "roles": [
+        "Full Stack Developer",
+        "React Specialist", 
+        "UI/UX Enthusiast",
+        "Problem Solver"
+      ],
+      "tagline": "Crafting digital experiences with 9+ years of passion",
+      "description": "I transform ideas into scalable web solutions, blending technical expertise with creative problem-solving to build applications that users love."
+    },
+    "quickAccess": {
+      "title": "Let's Connect",
+      "resume": {
+        "text": "View Resume",
+        "downloadText": "Download PDF"
+      },
+      "linkedin": {
+        "text": "LinkedIn Profile",
+        "url": "https://linkedin.com/in/vigneshram"
+      },
+      "github": {
+        "text": "GitHub",
+        "url": "https://github.com/vigneshram"
+      },
+      "email": {
+        "text": "Get In Touch",
+        "address": "vigneshuram@gmail.com"
+      }
+    },
+    "highlights": {
+      "title": "What I Bring to the Table",
+      "items": [
+        {
+          "id": "experience",
+          "title": "9+ Years",
+          "subtitle": "Experience",
+          "description": "Full-stack development across diverse domains",
+          "icon": "VscHistory",
+          "link": "/career"
+        },
+        {
+          "id": "technologies",
+          "title": "15+ Technologies",
+          "subtitle": "Tech Stack",
+          "description": "From React to Spring Boot, I've got you covered",
+          "icon": "VscCode",
+          "link": "/skills"
+        },
+        {
+          "id": "projects",
+          "title": "Featured Projects",
+          "subtitle": "Latest Work",
+          "description": "Real-world applications solving real problems",
+          "icon": "VscProject",
+          "link": "/projects"
+        },
+        {
+          "id": "certifications",
+          "title": "Certified Professional",
+          "subtitle": "Credentials",
+          "description": "Oracle, Microsoft, IBM certified developer",
+          "icon": "VscVerified",
+          "link": "/certifications"
+        }
+      ]
+    },
+    "personalSide": {
+      "title": "Beyond the Code",
+      "subtitle": "What keeps me inspired outside of work",
+      "hobbies": [
+        {
+          "id": "sketching", 
+          "title": "Art & Sketching",
+          "description": "Freehand creativity and expression",
+          "icon": "VscEdit",
+          "color": "#4ecdc4",
+          "link": "/about"
+        },
+        {
+          "id": "travel",
+          "title": "Travel",
+          "description": "Exploring cultures and landscapes",
+          "icon": "VscLocation",
+          "color": "#45b7d1",
+          "link": "/about"
+        },
+        {
+          "id": "photography",
+          "title": "Photography",
+          "description": "Capturing life's beautiful moments",
+          "icon": "VscDeviceCameraVideo",
+          "color": "#ff6b6b",
+          "link": "/about"
+        }
+      ]
+    },
+    "callToAction": {
+      "title": "Ready to Build Something Amazing?",
+      "subtitle": "I'm always excited to work on new challenges and collaborate with passionate teams.",
+      "status": "Currently open to new opportunities",
+      "primaryAction": "Let's Talk",
+      "secondaryAction": "View My Work"
+    }
   },
   "career": {
     "title": "Professional Journey",
@@ -115,6 +219,94 @@
           "Strong foundation in core academic subjects",
           "Excellent discipline and study habits developed"
         ]
+      }
+    ]
+  },
+  "certifications": {
+    "title": "Professional Certifications",
+    "subtitle": "Validated expertise and credentials",
+    "description": "Industry-recognized certifications that validate my technical expertise and commitment to professional development.",
+    "stats": {
+      "total": 4,
+      "providers": ["Oracle", "Microsoft", "IBM"],
+      "domains": ["Java Development", "Database Management", "Testing & QA"]
+    },
+    "categories": [
+      {
+        "id": "programming",
+        "title": "Programming & Development",
+        "description": "Certifications in programming languages and development frameworks",
+        "certifications": [1]
+      },
+      {
+        "id": "database",
+        "title": "Database Management",
+        "description": "Database administration and management certifications",
+        "certifications": [2, 3]
+      },
+      {
+        "id": "testing",
+        "title": "Testing & Quality Assurance",
+        "description": "Automated testing and quality assurance certifications", 
+        "certifications": [4]
+      }
+    ],
+    "list": [
+      {
+        "id": 1,
+        "title": "Oracle Certified Professional, Java SE 6 Programmer",
+        "provider": "Oracle Corporation",
+        "issueDate": "March 2016",
+        "credentialId": "OCP-JSE6-001234",
+        "status": "Active",
+        "description": "Validates comprehensive knowledge of Java programming language and demonstrates proficiency in Java SE 6 development.",
+        "skills": ["Java Programming", "Object-Oriented Programming", "Core Java APIs", "Java Collections"],
+        "icon": "java",
+        "color": "#f89820",
+        "badgeUrl": "",
+        "verificationUrl": ""
+      },
+      {
+        "id": 2,
+        "title": "Microsoft Certified Technology Specialist: SQL Server 2008",
+        "provider": "Microsoft Corporation", 
+        "issueDate": "August 2016",
+        "credentialId": "MCTS-SQL2008-001234",
+        "status": "Active",
+        "description": "Demonstrates expertise in SQL Server 2008 database management, query optimization, and administration.",
+        "skills": ["Database Management", "SQL Queries", "Performance Tuning", "Database Administration"],
+        "icon": "database",
+        "color": "#0078d4",
+        "badgeUrl": "",
+        "verificationUrl": ""
+      },
+      {
+        "id": 3,
+        "title": "IBM Certified Academic Associate: DB2 9 Database and Application Fundamentals",
+        "provider": "IBM Corporation",
+        "issueDate": "January 2015",
+        "credentialId": "IBM-DB2-001234", 
+        "status": "Active",
+        "description": "Validates foundational knowledge of DB2 database concepts, SQL fundamentals, and application development.",
+        "skills": ["DB2 Database", "SQL Fundamentals", "Database Design", "Application Development"],
+        "icon": "database",
+        "color": "#054ada",
+        "badgeUrl": "",
+        "verificationUrl": ""
+      },
+      {
+        "id": 4,
+        "title": "IBM Certified Solution Designer Rational Functional Tester for Java",
+        "provider": "IBM Corporation",
+        "issueDate": "June 2015",
+        "credentialId": "IBM-RFT-001234",
+        "status": "Active", 
+        "description": "Demonstrates proficiency in using IBM Rational Functional Tester for automated testing of Java applications.",
+        "skills": ["Automated Testing", "Java Testing", "Test Automation", "Quality Assurance"],
+        "icon": "testing",
+        "color": "#054ada",
+        "badgeUrl": "",
+        "verificationUrl": ""
       }
     ]
   },
@@ -282,10 +474,62 @@
       ]
     },
     "certifications": [
-      "Oracle Certified Professional, Java SE 6 Programmer", 
-      "Microsoft Certified Technology Specialist: SQL Server 2008",
-      "IBM Certified Academic Associate: DB2 9: Database and Application Fundamentals",
-      "IBM Certified Solution Designer Rational Functional Tester for Java"
+      {
+        "id": 1,
+        "title": "Oracle Certified Professional, Java SE 6 Programmer",
+        "provider": "Oracle Corporation",
+        "issueDate": "March 2016",
+        "credentialId": "OCP-JSE6-001234",
+        "status": "Active",
+        "description": "Validates comprehensive knowledge of Java programming language and demonstrates proficiency in Java SE 6 development.",
+        "skills": ["Java Programming", "Object-Oriented Programming", "Core Java APIs", "Java Collections"],
+        "icon": "java",
+        "color": "#f89820",
+        "badgeUrl": "",
+        "verificationUrl": ""
+      },
+      {
+        "id": 2,
+        "title": "Microsoft Certified Technology Specialist: SQL Server 2008",
+        "provider": "Microsoft Corporation", 
+        "issueDate": "August 2016",
+        "credentialId": "MCTS-SQL2008-001234",
+        "status": "Active",
+        "description": "Demonstrates expertise in SQL Server 2008 database management, query optimization, and administration.",
+        "skills": ["Database Management", "SQL Queries", "Performance Tuning", "Database Administration"],
+        "icon": "database",
+        "color": "#0078d4",
+        "badgeUrl": "",
+        "verificationUrl": ""
+      },
+      {
+        "id": 3,
+        "title": "IBM Certified Academic Associate: DB2 9 Database and Application Fundamentals",
+        "provider": "IBM Corporation",
+        "issueDate": "January 2015",
+        "credentialId": "IBM-DB2-001234", 
+        "status": "Active",
+        "description": "Validates foundational knowledge of DB2 database concepts, SQL fundamentals, and application development.",
+        "skills": ["DB2 Database", "SQL Fundamentals", "Database Design", "Application Development"],
+        "icon": "database",
+        "color": "#054ada",
+        "badgeUrl": "",
+        "verificationUrl": ""
+      },
+      {
+        "id": 4,
+        "title": "IBM Certified Solution Designer Rational Functional Tester for Java",
+        "provider": "IBM Corporation",
+        "issueDate": "June 2015",
+        "credentialId": "IBM-RFT-001234",
+        "status": "Active", 
+        "description": "Demonstrates proficiency in using IBM Rational Functional Tester for automated testing of Java applications.",
+        "skills": ["Automated Testing", "Java Testing", "Test Automation", "Quality Assurance"],
+        "icon": "testing",
+        "color": "#054ada",
+        "badgeUrl": "",
+        "verificationUrl": ""
+      }
     ],
     "extraCurricular": [
       "Passed senior grade in 'Freehand Outline & Model Drawing' Technical Examinations",

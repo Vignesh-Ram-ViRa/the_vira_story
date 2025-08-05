@@ -1,54 +1,824 @@
-/* Home page content */
-.home-content {
+/* ========================================
+   HOME PAGE STYLES - CLEAN & MINIMAL
+   ======================================== */
+
+.home-page {
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}
+
+/* ========================================
+   HERO SECTION - WITH LIGHT RAYS BACKGROUND
+   ======================================== */
+.home-hero {
+  height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 12rem);
-  padding: 2rem 0;
+  padding: 0;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--color-background) 0%,
+    var(--color-surface) 100%
+  );
+  overflow: hidden;
 }
 
-.content-container {
-  max-width: 80rem;
+/* Light rays background positioning */
+.home-hero .light-rays-container {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 0 2rem;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.welcome-section {
-  text-align: center;
+.home-page .hero-content {
   max-width: 50rem;
-  margin: 0 auto;
+  text-align: center;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.welcome-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-  color: var(--color-text-primary);
+.home-page .hero-greeting {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 0.5rem 0;
+  font-weight: 400;
+}
+
+.home-page .hero-name {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
   margin: 0 0 1rem 0;
-  line-height: 1.1;
-}
-
-.welcome-tagline {
-  font-size: clamp(1.25rem, 3vw, 2rem);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin: 0 0 2rem 0;
+  padding: 0.5rem 0 1rem 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 1.2;
 }
 
-.welcome-description {
-  font-size: 1.125rem;
+.home-page .hero-role-container {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin: 1rem 0 2rem 0;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.home-page .hero-role-prefix {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.home-page .hero-role {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.home-page .hero-tagline {
+  font-size: 1.3rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 1.5rem 0;
+  font-weight: 500;
+}
+
+.home-page .hero-description {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 37.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========================================
+   SECTION STYLING
+   ======================================== */
+.home-page .home-section {
+  padding: 4rem 2rem;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0 0 3rem 0;
+  font-style: italic;
+}
+
+/* ========================================
+   QUICK ACCESS SECTION
+   ======================================== */
+.home-quick-access {
+  background: var(--color-surface);
+  border-radius: 2rem;
+  margin: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2rem; /* Reduced from default 4rem 2rem */
+}
+
+.quick-access-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+  gap: 1.25rem; /* Reduced from 1.5rem */
+  margin-top: 1.5rem; /* Reduced from 2rem */
+}
+
+.access-card {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem; /* Reduced from 1rem */
+  padding: 1.25rem; /* Reduced from 1.5rem */
+  border: 2px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-background);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+  min-height: 4.5rem; /* Reduced from 5rem */
+}
+
+.access-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.access-icon {
+  font-size: 1.875rem; /* Reduced from 2rem */
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.access-content {
+  flex: 1;
+  text-align: left;
+}
+
+.access-title {
+  display: block;
+  font-size: 1.05rem; /* Slightly reduced from 1.1rem */
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.access-subtitle {
+  display: block;
+  font-size: 0.875rem; /* Slightly reduced from 0.9rem */
+  color: var(--color-text-secondary);
+}
+
+.external-icon {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.access-card:hover .external-icon {
+  opacity: 1;
+}
+
+/* Special styling for different card types */
+.access-card.primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  border-color: transparent;
+}
+
+.access-card.primary .access-icon,
+.access-card.primary .access-title,
+.access-card.primary .access-subtitle {
+  color: white;
+}
+
+.access-card.linkedin:hover {
+  border-color: #0077b5;
+}
+
+.access-card.github:hover {
+  border-color: #333;
+}
+
+.access-card.email:hover {
+  border-color: #ea4335;
+}
+
+/* ========================================
+   HIGHLIGHTS GRID
+   ======================================== */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.highlight-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-icon {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.highlight-icon svg {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.highlight-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.highlight-subtitle {
+  font-size: 1rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.highlight-description {
   color: var(--color-text-secondary);
   line-height: 1.6;
   margin: 0;
 }
 
-/* Responsive Design */
+.highlight-arrow {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.highlight-card:hover .highlight-arrow {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+/* ========================================
+   PERSONAL SIDE SECTION
+   ======================================== */
+.home-personal {
+  background: var(--color-surface);
+  border-radius: 2rem;
+  margin: 2rem;
+  padding: 4rem 2rem;
+}
+
+.personal-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.personal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+  gap: 2rem;
+}
+
+.personal-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.personal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--card-color, var(--color-primary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.personal-card:hover::before {
+  opacity: 1;
+}
+
+.personal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.personal-icon {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--card-color, var(--color-primary)) 20%, transparent),
+    color-mix(in srgb, var(--card-color, var(--color-primary)) 10%, transparent)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  border: 2px solid var(--card-color, var(--color-primary));
+}
+
+.personal-icon svg {
+  font-size: 2rem;
+  color: var(--card-color, var(--color-primary));
+}
+
+.personal-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 0.75rem 0;
+}
+
+.personal-description {
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ========================================
+   CALL TO ACTION SECTION
+   ======================================== */
+.home-cta {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
+  border-radius: 2rem;
+  margin: 2rem;
+  color: white;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 37.5rem;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: white;
+}
+
+.cta-subtitle {
+  font-size: 1.2rem;
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.cta-status {
+  font-size: 1rem;
+  margin: 0 0 2rem 0;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-primary,
+.cta-secondary {
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  min-width: 10rem;
+}
+
+.cta-primary {
+  background: white;
+  color: var(--color-primary);
+  border-color: white;
+}
+
+.cta-primary:hover {
+  background: transparent;
+  color: white;
+  border-color: white;
+}
+
+.cta-secondary {
+  background: transparent;
+  color: white;
+  border-color: white;
+}
+
+.cta-secondary:hover {
+  background: white;
+  color: var(--color-primary);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet optimizations */
+@media (max-width: 1024px) {
+  .home-page .home-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .home-quick-access,
+  .home-personal,
+  .home-cta {
+    margin: 1.5rem;
+    padding: 2.5rem 1.5rem; /* Reduced from 3rem 1.5rem */
+  }
+
+  .quick-access-grid {
+    gap: 1rem; /* Reduced from 1.25rem */
+    margin-top: 1.25rem; /* Reduced from 1.5rem */
+  }
+
+  .access-card {
+    padding: 1rem; /* Reduced from 1.25rem */
+    min-height: 3.75rem; /* Reduced from 4rem */
+  }
+
+  .access-icon {
+    font-size: 1.75rem; /* Reduced from 1.8rem */
+  }
+
+  .highlights-grid {
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .highlight-card {
+    padding: 1.5rem;
+  }
+
+  .highlight-icon {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .highlight-icon svg {
+    font-size: 1.5rem;
+  }
+
+  .highlight-title {
+    font-size: 1.3rem;
+  }
+
+  .personal-grid {
+    gap: 1.5rem;
+  }
+
+  .personal-card {
+    padding: 1.5rem;
+  }
+
+  .personal-icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1.25rem;
+  }
+
+  .personal-icon svg {
+    font-size: 1.8rem;
+  }
+
+  .personal-title {
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .content-container {
+  .home-page .home-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .home-quick-access,
+  .home-personal,
+  .home-cta {
+    margin: 1rem;
+    padding: 2rem 1rem; /* Reduced from 2.5rem 1rem */
+  }
+
+  .home-hero {
+    height: 100vh;
+    padding: 0;
+  }
+
+  .home-page .hero-content {
     padding: 0 1rem;
   }
-  
-  .welcome-description {
+
+  .home-page .hero-name {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .home-page .hero-role-container {
+    font-size: clamp(1.2rem, 6vw, 2rem);
+    flex-direction: column;
+    height: auto;
+    gap: 0.25rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quick-access-grid {
+    grid-template-columns: 1fr;
+    gap: 0.875rem; /* Reduced from 1rem */
+    margin-top: 1.25rem; /* Reduced from 1.5rem */
+  }
+
+  .access-card {
+    padding: 0.875rem; /* Reduced from 1rem */
+    min-height: 3.25rem; /* Reduced from 3.5rem */
+  }
+
+  .access-icon {
+    font-size: 1.4rem; /* Reduced from 1.5rem */
+  }
+
+  .access-title {
+    font-size: 0.95rem; /* Reduced from 1rem */
+  }
+
+  .access-subtitle {
+    font-size: 0.8rem; /* Reduced from 0.85rem */
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .highlight-card {
+    padding: 1.25rem;
+  }
+
+  .highlight-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .highlight-icon svg {
+    font-size: 1.3rem;
+  }
+
+  .highlight-title {
+    font-size: 1.2rem;
+  }
+
+  .highlight-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .personal-header {
+    margin-bottom: 2rem;
+  }
+
+  .personal-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .personal-card {
+    padding: 1.25rem;
+  }
+
+  .personal-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 auto 1rem;
+  }
+
+  .personal-icon svg {
+    font-size: 1.6rem;
+  }
+
+  .personal-title {
+    font-size: 1.1rem;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    width: 100%;
+    max-width: 18.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page .home-section {
+    padding: 2rem 1rem;
+  }
+
+  .home-quick-access,
+  .home-personal,
+  .home-cta {
+    margin: 0.75rem;
+    border-radius: 1.5rem;
+    padding: 1.75rem 1rem; /* Reduced from 2rem 1rem */
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .quick-access-grid {
+    gap: 0.625rem; /* Reduced from 0.75rem */
+    margin-top: 1rem; /* Reduced from 1.25rem */
+  }
+
+  .access-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.625rem; /* Reduced from 0.75rem */
+    padding: 0.875rem; /* Reduced from 1rem */
+    min-height: auto;
+  }
+
+  .access-icon {
+    font-size: 1.6rem; /* Reduced from 1.8rem */
+  }
+
+  .highlights-grid {
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .highlight-card {
+    padding: 1rem;
+  }
+
+  .highlight-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .highlight-icon svg {
+    font-size: 1.2rem;
+  }
+
+  .highlight-title {
+    font-size: 1.1rem;
+  }
+
+  .personal-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .personal-grid {
+    gap: 1rem;
+  }
+
+  .personal-card {
+    padding: 1rem;
+  }
+
+  .personal-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto 0.75rem;
+  }
+
+  .personal-icon svg {
+    font-size: 1.4rem;
+  }
+
+  .personal-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .home-page .hero-description {
     font-size: 1rem;
   }
+}
+
+/* ========================================
+   THEME SPECIFIC ENHANCEMENTS
+   ======================================== */
+[data-theme="light"] .home-hero {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f8fafc 100%
+  );
+}
+
+[data-theme="light"] .home-quick-access {
+  background: #ffffff;
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.08);
+}
+
+[data-theme="light"] .home-personal {
+  background: #f8fafc;
+}
+
+[data-theme="pastel"] .home-hero {
+  background: linear-gradient(
+    135deg,
+    #faf9ff 0%,
+    #f3f1ff 100%
+  );
+}
+
+[data-theme="pastel"] .home-quick-access {
+  background: #faf9ff;
+  box-shadow: 0 10px 40px rgba(167, 139, 250, 0.1);
+}
+
+[data-theme="pastel"] .home-personal {
+  background: #f3f1ff;
 } 

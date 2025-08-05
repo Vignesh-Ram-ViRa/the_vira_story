@@ -23,10 +23,6 @@
   box-sizing: border-box;
 }
 
-.footer-content > * {
-  margin-right: 5%;
-}
-
 .footer-content::before {
   content: '';
   position: absolute;

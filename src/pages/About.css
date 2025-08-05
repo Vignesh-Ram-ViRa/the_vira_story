@@ -1,7 +1,7 @@
 /* About Me Page - Personal & Warm Design */
 .about-page {
   padding: 2rem;
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto;
   width: 100%;
   overflow-x: hidden;
@@ -59,7 +59,7 @@
 .about-tagline {
   font-size: 1.25rem;
   color: var(--color-text-secondary);
-  max-width: 700px;
+  max-width: 43.75rem;
   margin: 0 auto;
   line-height: 1.6;
   font-weight: 400;
@@ -94,7 +94,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 0.25rem;
   background: linear-gradient(90deg, #ff6b6b, #ff9f43, #7e57c2);
   border-radius: 1.5rem 1.5rem 0 0;
 }
@@ -138,7 +138,7 @@
 .details-grid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
 }
 
 .detail-item {
@@ -204,7 +204,7 @@
 /* Achievements Section */
 .achievements-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
   gap: 1.5rem;
 }
 
@@ -285,7 +285,7 @@
 /* Hobbies Section */
 .hobbies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
   gap: 1.5rem;
 }
 
@@ -305,7 +305,7 @@
 
 .hobby-card.featured {
   grid-column: span 1;
-  min-height: 320px;
+  min-height: 20rem;
   position: relative;
   overflow: visible;
   padding-bottom: 3rem;
@@ -327,7 +327,7 @@
 
 .hobby-card.simple {
   text-align: center;
-  min-height: 150px;
+  min-height: 9.375rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -356,7 +356,7 @@
 
 .hobby-preview {
   margin: 1rem 0;
-  height: 100px;
+  height: 6.25rem;
   background: var(--color-surface);
   border-radius: 0.75rem;
   display: flex;
@@ -367,7 +367,7 @@
 
 .hobby-3d-preview {
   margin: 1rem 0 2rem 0;
-  height: 140px;
+  height: 8.75rem;
   background: transparent;
   border-radius: 0.75rem;
   display: flex;
@@ -482,14 +482,14 @@
   
   .hobby-card.featured {
     grid-column: span 1;
-    min-height: 280px;
+    min-height: 17.5rem;
     position: relative;
     overflow: visible;
     padding-bottom: 2.5rem;
   }
   
   .hobby-3d-preview {
-    height: 120px;
+    height: 7.5rem;
     margin-bottom: 1.5rem;
   }
   
@@ -500,7 +500,7 @@
   }
   
   .hobby-card.simple {
-    min-height: 130px;
+    min-height: 8.125rem;
     padding-bottom: 2.5rem;
   }
 }
@@ -530,12 +530,12 @@
   }
   
   .hobby-card.simple {
-    min-height: 120px;
+    min-height: 7.5rem;
     padding-bottom: 2.5rem;
   }
   
   .hobby-card.featured {
-    min-height: 260px;
+    min-height: 16.25rem;
     padding-bottom: 2.5rem;
   }
   
@@ -572,15 +572,15 @@
 
   
   .hobby-preview {
-    height: 80px;
+    height: 5rem;
   }
   
   .hobby-3d-preview {
-    height: 100px;
+    height: 6.25rem;
   }
   
   .hobby-3d-preview {
-    height: 100px;
+    height: 6.25rem;
   }
 }
 

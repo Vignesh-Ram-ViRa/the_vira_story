@@ -6,34 +6,119 @@
   --paper-3: #ffffff;
 }
 
-.folder {
+.folder-container {
   position: relative;
-  width: 120px;
-  height: 100px;
-  transition: all 0.3s ease-in-out;
   cursor: pointer;
-  margin: 1rem auto;
+  transform-style: preserve-3d;
+  perspective-origin: center;
+  margin: 0 auto;
+  width: 7.5rem;
+  height: 6.25rem;
+  transition: all 0.3s ease;
+}
+
+.folder-container:hover {
+  animation: float 2s ease-in-out infinite;
+  transform: translateY(-0.5rem) scale(var(--folder-scale, 1));
+}
+
+.folder-container:active {
+  animation: none;
+  transform: translateY(-0.5rem) scale(var(--folder-scale, 1));
+}
+
+/* Folder Base */
+.folder-base {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 7.5rem;
+  height: 6.25rem;
+  background: #F4D03F;
+  border-radius: 0 0.75rem 0.75rem 0.75rem;
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.2);
   transform-style: preserve-3d;
 }
 
-.folder:not(.open):hover {
-  transform: translateY(-8px) scale(var(--folder-scale, 1));
+/* Folder Tab */
+.folder-tab {
+  position: absolute;
+  top: -0.75rem;
+  left: 0.75rem;
+  width: 2.25rem;
+  height: 0.75rem;
+  background: #F1C40F;
+  border-radius: 0.375rem 0.375rem 0 0;
+  transform-style: preserve-3d;
 }
 
-.folder:not(.open):hover .paper {
-  transform: translate(-50%, -5%);
+/* Folder Content */
+.folder-content {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
 }
 
-.folder:not(.open):hover .folder__front {
-  transform: skew(8deg) scaleY(0.8);
+.folder-preview {
+  text-align: center;
+  color: #555;
 }
 
-.folder.open {
-  transform: translateY(-8px) scale(var(--folder-scale, 1));
+.folder-preview .preview-icon {
+  font-size: 1.5rem;
+  color: #E67E22;
+  margin-bottom: 0.25rem;
 }
 
-.folder.open .folder__front {
-  transform: skew(15deg) scaleY(0.6);
+.folder-preview .preview-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03125rem;
+  color: #666;
+}
+
+.folder-stack {
+  position: absolute;
+  bottom: 0.125rem;
+  left: 0.125rem;
+  right: 0.125rem;
+  height: 6rem;
+  background: linear-gradient(135deg, #F7DC6F, #F4D03F);
+  border-radius: 0.375rem 0.75rem 0.75rem 0.75rem;
+  z-index: -1;
+  transform: translateZ(-0.125rem);
+  box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.15);
+}
+
+/* Folder Title */
+.folder-title {
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+  text-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.folder-container:hover .folder-title {
+  opacity: 1;
+  bottom: -2.5rem;
+  box-shadow: 0 0.5rem 1.5625rem rgba(0, 0, 0, 0.2);
 }
 
 .folder__back {
@@ -172,14 +257,14 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .folder {
-    width: 100px;
-    height: 80px;
+  .folder-container {
+    width: 6.25rem;
+    height: 5rem;
   }
   
-  .folder__back {
-    width: 100px;
-    height: 80px;
+  .folder-base {
+    width: 6.25rem;
+    height: 5rem;
   }
   
   .sketch-content {

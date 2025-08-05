@@ -71,17 +71,6 @@ const About = () => {
     }
   };
 
-  // Hobby icons mapping
-  const hobbyIcons = {
-    photography: VscDeviceCameraVideo,
-    sketching: VscEdit,
-    travel: VscLocation,
-    reading: VscBook,
-    movies: VscDeviceCameraVideo,
-    anime: VscSymbolEvent,
-    badminton: VscGame,
-  };
-
   return (
     <motion.div 
       className="about-page"
@@ -187,36 +176,6 @@ const About = () => {
           <div className="hobbies-grid">
             {/* Rich Content Hobbies with Unified Stack Components */}
             <motion.div 
-              className="hobby-card featured photography"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              onClick={() => openHobbyModal('photography')}
-            >
-              <div className="hobby-header">
-                <VscDeviceCameraVideo className="hobby-icon" />
-                <div>
-                  <h3>Photography</h3>
-                  <p>Capturing life's beautiful moments</p>
-                </div>
-              </div>
-              <div className="hobby-3d-preview">
-                <Stack
-                  randomRotation={true}
-                  sensitivity={150}
-                  cardDimensions={{ width: 120, height: 120 }}
-                  sendToBackOnClick={false}
-                  cardsData={[
-                    { id: 1, img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=500&auto=format", alt: "Mountain landscape" },
-                    { id: 2, img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=500&auto=format", alt: "Forest path" },
-                    { id: 3, img: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=500&auto=format", alt: "Ocean waves" },
-                    { id: 4, img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=500&auto=format", alt: "Desert sunset" }
-                  ]}
-                />
-              </div>
-              <span className="hobby-status">Interactive Gallery</span>
-            </motion.div>
-
-            <motion.div 
               className="hobby-card featured sketching"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
@@ -236,7 +195,7 @@ const About = () => {
                   cardDimensions={{ width: 120, height: 120 }}
                   sendToBackOnClick={false}
                   cardsData={[
-                    { id: 1, img: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=500&auto=format", alt: "Portrait sketch" },
+                    { id: 1, img: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=500&auto=format", alt: "Sketch placeholder" },
                     { id: 2, img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=500&auto=format", alt: "Landscape drawing" },
                     { id: 3, img: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=500&auto=format", alt: "Abstract art" },
                     { id: 4, img: "https://images.unsplash.com/photo-1594736797933-d0c8c986d1e8?q=80&w=500&auto=format", alt: "Character study" }
@@ -274,6 +233,36 @@ const About = () => {
                 />
               </div>
               <span className="hobby-status">Journey Memories</span>
+            </motion.div>
+
+            <motion.div 
+              className="hobby-card featured photography"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => openHobbyModal('photography')}
+            >
+              <div className="hobby-header">
+                <VscDeviceCameraVideo className="hobby-icon" />
+                <div>
+                  <h3>Photography</h3>
+                  <p>Capturing life's beautiful moments</p>
+                </div>
+              </div>
+              <div className="hobby-3d-preview">
+                <Stack
+                  randomRotation={true}
+                  sensitivity={150}
+                  cardDimensions={{ width: 120, height: 120 }}
+                  sendToBackOnClick={false}
+                  cardsData={[
+                    { id: 1, img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=500&auto=format", alt: "Mountain landscape" },
+                    { id: 2, img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=500&auto=format", alt: "Forest path" },
+                    { id: 3, img: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=500&auto=format", alt: "Ocean waves" },
+                    { id: 4, img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=500&auto=format", alt: "Desert sunset" }
+                  ]}
+                />
+              </div>
+              <span className="hobby-status">Interactive Gallery</span>
             </motion.div>
 
             {/* Simple Hobby Cards */}

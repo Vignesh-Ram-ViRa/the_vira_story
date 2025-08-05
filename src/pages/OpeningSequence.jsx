@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Particles from '../components/atoms/Particles/Particles';
-import useTheme from '../hooks/useTheme';
 import { getLanguageContent } from '../utils/language';
 import './OpeningSequence.css';
 
@@ -13,7 +12,6 @@ import './OpeningSequence.css';
 const OpeningSequence = () => {
   const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
-  const { currentTheme } = useTheme();
   const content = getLanguageContent();
 
   const handleNameClick = useCallback(() => {
@@ -53,7 +51,7 @@ const OpeningSequence = () => {
 
       {/* Content Overlay */}
       <div className="opening-content">
-                <motion.div
+        <motion.div
           className="name-container"
           onClick={handleNameClick}
           initial={{ opacity: 0, scale: 0.8 }}
@@ -77,7 +75,7 @@ const OpeningSequence = () => {
           
           {!isClicked && (
             <motion.p
-              className="click-hint"
+              className="opening-click-hint"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

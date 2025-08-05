@@ -1,35 +1,29 @@
-import { useRef, useEffect, useCallback, useState } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 import "./MagicBento.css";
 
-const DEFAULT_GLOW_COLOR = "132, 0, 255";
+const DEFAULT_GLOW_COLOR = "255, 215, 0"; // Golden color for sun spots
 
-const createParticleElement = (x, y, color = DEFAULT_GLOW_COLOR) => {
+const createParticleElement = (x, y, color = "255, 215, 0") => {
   const el = document.createElement("div");
   el.className = "particle";
   el.style.cssText = `
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: rgba(${color}, 1);
-    box-shadow: 0 0 6px rgba(${color}, 0.6);
+    background: radial-gradient(circle, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+    box-shadow: 
+      0 0 8px rgba(255, 215, 0, 0.8),
+      0 0 16px rgba(255, 165, 0, 0.4),
+      inset 0 0 4px rgba(255, 140, 0, 0.6);
     pointer-events: none;
     z-index: 100;
     left: ${x}px;
     top: ${y}px;
+    animation: sunSpotPulse 2s ease-in-out infinite alternate;
   `;
   return el;
-};
-
-const updateCardGlowProperties = (card, mouseX, mouseY, glow, radius) => {
-  const rect = card.getBoundingClientRect();
-  const relativeX = ((mouseX - rect.left) / rect.width) * 100;
-  const relativeY = ((mouseY - rect.top) / rect.height) * 100;
-  card.style.setProperty("--glow-x", `${relativeX}%`);
-  card.style.setProperty("--glow-y", `${relativeY}%`);
-  card.style.setProperty("--glow-intensity", glow.toString());
-  card.style.setProperty("--glow-radius", `${radius}px`);
 };
 
 const ParticleCard = ({ 
@@ -156,7 +150,7 @@ const ParticleCard = ({
         width: ${maxDistance * 2}px;
         height: ${maxDistance * 2}px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(${glowColor}, 0.4) 0%, rgba(${glowColor}, 0.2) 30%, transparent 70%);
+        background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, rgba(255, 165, 0, 0.2) 30%, transparent 70%);
         left: ${x - maxDistance}px;
         top: ${y - maxDistance}px;
         pointer-events: none;
@@ -179,7 +173,7 @@ const ParticleCard = ({
       element.removeEventListener("click", handleClick);
       clearAllParticles();
     };
-  }, [animateParticles, clearAllParticles, enableTilt, clickEffect, glowColor, onCardClick]);
+  }, [animateParticles, clearAllParticles, enableTilt, clickEffect, glowColor, onCardClick, enableMagnetism]);
 
   return (
     <div

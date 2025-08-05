@@ -81,7 +81,7 @@
 
 .dock-item:focus {
   outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
 .dock-icon {
@@ -160,7 +160,7 @@
     /* Make dock more prominent on mobile */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
     background: var(--color-surface) !important;
-    border: 2px solid var(--color-border) !important;
+    border: 0.125rem solid var(--color-border) !important;
   }
   
   .dock-drag-handle {
@@ -173,8 +173,8 @@
   
   .dock-item {
     /* Larger touch targets for mobile */
-    width: 48px !important;
-    height: 48px !important;
+    width: 3rem !important;
+    height: 3rem !important;
     border: 1px solid var(--color-border) !important;
   }
   

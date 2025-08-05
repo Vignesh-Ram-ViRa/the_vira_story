@@ -18,7 +18,6 @@ const Projects = () => {
   const content = getLanguageContent();
   const projects = content.projects;
   const [searchTerm, setSearchTerm] = useState('');
-  const [hoveredProject, setHoveredProject] = useState(null);
 
   // Filter projects based on search term
   const filteredProjects = projects.list.filter(project => {
@@ -215,8 +214,6 @@ const Projects = () => {
                  className={`project-card ${project.featured ? 'featured' : ''}`}
                  variants={cardVariants}
                  whileHover="hover"
-                 onHoverStart={() => setHoveredProject(project.id)}
-                 onHoverEnd={() => setHoveredProject(null)}
                >
                  {/* Project Image/Preview */}
                  <div 

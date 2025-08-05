@@ -39,7 +39,8 @@
 .main-name {
   font-size: clamp(3rem, 8vw, 8rem);
   font-weight: 800;
-  margin: 0;
+  margin: 0 0 2rem 0;
+  padding: 1rem 0;
   background: linear-gradient(135deg, #f1f5f9, #cbd5e1, #3b82f6, #60a5fa);
   -webkit-background-clip: text;
   background-clip: text;
@@ -48,20 +49,20 @@
     0 0 1rem rgba(59, 130, 246, 0.4),
     0 0 2rem rgba(96, 165, 250, 0.3);
   letter-spacing: 0.05em;
-  line-height: 1.1;
+  line-height: 1.2;
   font-family: 'Poppins', sans-serif;
   filter: drop-shadow(0 0 0.5rem rgba(59, 130, 246, 0.3));
 }
 
-.click-hint {
-  font-size: 1.125rem;
+.opening-click-hint {
+  font-size: 1rem;
   color: #cbd5e1;
-  margin-top: 2rem;
-  font-weight: 500;
-  opacity: 0.9;
+  margin: 0;
+  font-weight: 400;
+  opacity: 0.8;
   animation: pulse 2s ease-in-out infinite;
   font-family: 'Poppins', sans-serif;
-  text-shadow: 0 0 1rem rgba(59, 130, 246, 0.4);
+  text-shadow: 0 0 1rem rgba(59, 130, 246, 0.3);
 }
 
 .zoom-container {
@@ -93,11 +94,11 @@
 @media (max-width: 768px) {
   .main-name {
     font-size: clamp(2.5rem, 10vw, 6rem);
+    margin: 0 0 1.5rem 0;
   }
   
-  .click-hint {
-    font-size: 1rem;
-    margin-top: 1.5rem;
+  .opening-click-hint {
+    font-size: 0.9rem;
   }
 }
 
@@ -105,10 +106,10 @@
   .main-name {
     font-size: clamp(2rem, 12vw, 4rem);
     letter-spacing: -0.01em;
+    margin: 0 0 1rem 0;
   }
   
-  .click-hint {
-    font-size: 0.875rem;
-    margin-top: 1rem;
+  .opening-click-hint {
+    font-size: 0.8rem;
   }
 } 

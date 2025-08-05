@@ -33,7 +33,6 @@ const themeSlice = createSlice({
     },
     toggleTheme: (state) => {
       // Toggle between light and dark themes (legacy support)
-      const currentIndex = themeNames.indexOf(state.currentTheme);
       let newTheme;
       
       if (state.currentTheme === 'light') {
