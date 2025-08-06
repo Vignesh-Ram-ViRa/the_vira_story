@@ -544,4 +544,45 @@
     background: linear-gradient(135deg, #a78bfa, #8b5cf6) !important;
     box-shadow: 0 4px 15px rgba(167, 139, 250, 0.3) !important;
   }
+}
+
+/* Show Dock Button */
+.show-dock-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 90;
+  backdrop-filter: blur(8px);
+}
+
+.show-dock-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  background: var(--color-accent);
+}
+
+.show-dock-button:active {
+  transform: scale(0.95);
+}
+
+/* Show dock button mobile responsiveness */
+@media (max-width: 768px) {
+  .show-dock-button {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 } 

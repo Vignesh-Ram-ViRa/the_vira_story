@@ -73,6 +73,18 @@ const Home = () => {
     const observer = new MutationObserver(() => {
       const newColor = updateRaysColor();
       setRaysColor(newColor);
+      
+      // Force re-apply hexagon shapes on theme change
+      setTimeout(() => {
+        const hexCards = document.querySelectorAll('.highlight-card');
+        hexCards.forEach(card => {
+          card.style.clipPath = 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)';
+          const before = window.getComputedStyle(card, '::before');
+          if (before) {
+            card.style.setProperty('--clip-path-before', 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)');
+          }
+        });
+      }, 50); // Small delay to ensure theme styles are applied first
     });
 
     observer.observe(document.documentElement, {

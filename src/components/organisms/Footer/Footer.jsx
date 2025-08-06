@@ -44,7 +44,7 @@ const Footer = () => {
         
         <div className="footer-info">
           <span className="footer-text">
-            © 2024 {content.personalInfo.name}
+            © 2025 {content.personalInfo.name}
           </span>
         </div>
       </div>

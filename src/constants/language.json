@@ -392,6 +392,42 @@
           "category": "database"
         }
       ]
+    },
+    "vibeCoding": {
+      "title": "AI-Assisted Development",
+      "description": "Modern AI-powered coding tools and assistants",
+      "technologies": [
+        {
+          "name": "Cursor",
+          "icon": "cursor",
+          "category": "vibeCoding",
+          "description": "AI-first code editor with intelligent code completion and generation"
+        },
+        {
+          "name": "GitHub Copilot",
+          "icon": "github",
+          "category": "vibeCoding",
+          "description": "AI pair programmer that suggests code and entire functions"
+        },
+        {
+          "name": "Tabnine",
+          "icon": "tabnine",
+          "category": "vibeCoding",
+          "description": "AI code completion tool that predicts and suggests code patterns"
+        },
+        {
+          "name": "ChatGPT",
+          "icon": "openai",
+          "category": "vibeCoding",
+          "description": "AI assistant for code review, debugging, and architectural decisions"
+        },
+        {
+          "name": "Claude",
+          "icon": "claude",
+          "category": "vibeCoding",
+          "description": "AI assistant for complex coding tasks and technical documentation"
+        }
+      ]
     }
   },
   "projects": {

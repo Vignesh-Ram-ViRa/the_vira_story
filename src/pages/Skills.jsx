@@ -28,8 +28,11 @@ import {
   SiOracle,
   SiBootstrap,
   SiTailwindcss,
-  SiRedux
+  SiRedux,
+  SiOpenai
 } from 'react-icons/si';
+import { FaGithub } from 'react-icons/fa';
+import { TbBrain, TbRobot, TbCode } from 'react-icons/tb';
 import { getLanguageContent } from '../utils/language';
 import './Skills.css';
 
@@ -41,7 +44,8 @@ const Skills = () => {
   const skills = [
     ...(skillsData.current?.technologies || []).map(tech => ({ ...tech, category: 'current' })),
     ...(skillsData.historical?.technologies || []).map(tech => ({ ...tech, category: 'historical' })),
-    ...(skillsData.tools?.technologies || []).map(tech => ({ ...tech, category: tech.category || 'tools' }))
+    ...(skillsData.tools?.technologies || []).map(tech => ({ ...tech, category: tech.category || 'tools' })),
+    ...(skillsData.vibeCoding?.technologies || []).map(tech => ({ ...tech, category: 'vibeCoding' }))
   ];
 
   // Icon mapping for technologies
@@ -80,6 +84,13 @@ const Skills = () => {
     'Jboss': <VscServer />,
     'Apache Tomcat': <VscServer />,
     
+    // Vibe Coding / AI Tools
+    'Cursor': <TbCode />,
+    'GitHub Copilot': <FaGithub />,
+    'Tabnine': <TbBrain />,
+    'ChatGPT': <SiOpenai />,
+    'Claude': <TbRobot />,
+    
     // Default fallback
     'default': <VscCode />
   };
@@ -97,6 +108,8 @@ const Skills = () => {
       case 'tools':
       case 'database':
         return 'var(--color-text-secondary)';
+      case 'vibeCoding':
+        return '#10b981'; // Green for AI/modern tools
       default:
         return 'var(--color-primary)';
     }
@@ -112,6 +125,8 @@ const Skills = () => {
         return 'Development Tools';
       case 'database':
         return 'Databases';
+      case 'vibeCoding':
+        return 'AI-Assisted Development';
       default:
         return category.charAt(0).toUpperCase() + category.slice(1);
     }
@@ -128,7 +143,7 @@ const Skills = () => {
   }, {});
 
   // Category order for display
-  const categoryOrder = ['current', 'historical', 'tools', 'database'];
+  const categoryOrder = ['current', 'vibeCoding', 'historical', 'tools', 'database'];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -306,13 +321,23 @@ const Skills = () => {
                       >
                         {skill.name}
                       </motion.h3>
+                      {skill.description && category === 'vibeCoding' && (
+                        <motion.p 
+                          className="skill-description"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 1.2 + (categoryOrder.indexOf(category) * 0.2) + (index * 0.05) }}
+                        >
+                          {skill.description}
+                        </motion.p>
+                      )}
                       <motion.div 
                         className="skill-category-badge"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 1.1 + (categoryOrder.indexOf(category) * 0.2) + (index * 0.05) }}
                       >
-                        {category}
+                        {category === 'vibeCoding' ? 'AI Tools' : category}
                       </motion.div>
                     </div>
 

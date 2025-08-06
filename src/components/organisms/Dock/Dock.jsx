@@ -15,7 +15,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { VscGripper } from "react-icons/vsc";
+import { VscGripper, VscClose } from "react-icons/vsc";
 import { useLocation } from "react-router-dom";
 
 import "./Dock.css";
@@ -110,15 +110,23 @@ export default function Dock({
   items,
   className = "",
   spring = { mass: 0.1, stiffness: 150, damping: 12 },
-  magnification = 70,
-  distance = 200,
-  panelHeight = 68,
-  dockHeight = 256,
-  baseItemSize = 50,
+  magnification = 55,
+  distance = 150,
+  panelHeight = 52,
+  dockHeight = 200,
+  baseItemSize = 38,
 }) {
   const mouseX = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isVisible, setIsVisible] = useState(() => {
+    // Check session storage for dock visibility
+    if (typeof window !== 'undefined') {
+      const saved = sessionStorage.getItem('dockVisible');
+      return saved !== null ? JSON.parse(saved) : true;
+    }
+    return true;
+  });
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const location = useLocation();
@@ -129,9 +137,9 @@ export default function Dock({
     if (typeof window !== 'undefined') {
       // Small delay to allow dock to render and get its width
       const timer = setTimeout(() => {
-        const dockWidth = dockRef.current?.offsetWidth || 300; // fallback to 300px
+        const dockWidth = dockRef.current?.offsetWidth || 250; // fallback to 250px (smaller)
         const centerX = (window.innerWidth - dockWidth) / 2;
-        const bottomY = window.innerHeight - 100;
+        const bottomY = window.innerHeight - 80; // Closer to bottom due to smaller size
         x.set(centerX);
         y.set(bottomY);
       }, 100);
@@ -139,6 +147,17 @@ export default function Dock({
       return () => clearTimeout(timer);
     }
   }, [location.pathname, x, y]);
+
+  // Handle dock visibility changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('dockVisible', JSON.stringify(isVisible));
+    }
+  }, [isVisible]);
+
+  const handleCloseDock = () => {
+    setIsVisible(false);
+  };
 
   const maxHeight = useMemo(
     () => Math.max(dockHeight, magnification + magnification / 2 + 4),
@@ -152,14 +171,19 @@ export default function Dock({
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
     
-    // Absolute positioning constraints
+    // Absolute positioning constraints (smaller dock)
     return {
       left: 20,                          // 20px from left edge
-      right: screenWidth - 320,          // Account for dock width
+      right: screenWidth - 270,          // Account for smaller dock width
       top: 20,                           // 20px from top edge
-      bottom: screenHeight - 120,        // 20px from bottom edge
+      bottom: screenHeight - 100,        // Closer to bottom for smaller dock
     };
   };
+
+  // If dock is not visible, don't render anything
+  if (!isVisible) {
+    return null;
+  }
 
       return (
       <motion.div
@@ -185,7 +209,7 @@ export default function Dock({
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <VscGripper size={16} />
+        <VscGripper size={14} />
       </motion.div>
 
       <motion.div
@@ -207,6 +231,7 @@ export default function Dock({
         role="toolbar"
         aria-label="Application dock"
       >
+        {/* Dock Items */}
         {items.map((item, index) => (
           <DockItem
             key={index}
@@ -223,6 +248,17 @@ export default function Dock({
           </DockItem>
         ))}
       </motion.div>
+
+      {/* Close Button - Outside dock panel */}
+      <motion.button
+        className="dock-close-button-external"
+        onClick={handleCloseDock}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        title="Close dock for this session"
+      >
+        <VscClose size={10} />
+      </motion.button>
     </motion.div>
   );
 }

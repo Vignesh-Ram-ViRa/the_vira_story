@@ -415,6 +415,16 @@
   z-index: 1;
 }
 
+.skill-description {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.9;
+  font-style: italic;
+}
+
 /* Enhanced skill names for light theme */
 [data-theme="light"] .skill-name {
   color: #1f2937;

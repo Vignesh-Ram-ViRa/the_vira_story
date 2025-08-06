@@ -9,7 +9,8 @@ import {
   VscColorMode,
   VscPerson,
   VscMenu,
-  VscClose
+  VscClose,
+  VscCircleLarge
 } from 'react-icons/vsc';
 
 // Components
@@ -34,6 +35,38 @@ const Layout = ({ children }) => {
   const content = getLanguageContent();
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDockVisible, setIsDockVisible] = useState(() => {
+    // Check session storage for dock visibility
+    if (typeof window !== 'undefined') {
+      const saved = sessionStorage.getItem('dockVisible');
+      return saved !== null ? JSON.parse(saved) : true;
+    }
+    return true;
+  });
+
+  // Listen for dock visibility changes from session storage
+  useEffect(() => {
+    const handleStorageChange = () => {
+      if (typeof window !== 'undefined') {
+        const saved = sessionStorage.getItem('dockVisible');
+        setIsDockVisible(saved !== null ? JSON.parse(saved) : true);
+      }
+    };
+
+    // Check periodically for session storage changes
+    const interval = setInterval(handleStorageChange, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const handleShowDock = () => {
+    setIsDockVisible(true);
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('dockVisible', JSON.stringify(true));
+    }
+  };
 
   // Navigation handlers
   const handleNavigation = useCallback((path) => {
@@ -271,13 +304,26 @@ const Layout = ({ children }) => {
       </main>
 
       {/* Dock Navigation */}
-      <Dock 
-        items={dockItems}
-        panelHeight={68}
-        baseItemSize={50}
-        magnification={70}
-        distance={200}
-      />
+      {isDockVisible && (
+        <Dock 
+          items={dockItems}
+          panelHeight={52}
+          baseItemSize={38}
+          magnification={55}
+          distance={150}
+        />
+      )}
+
+      {/* Show Dock Button (when dock is hidden) */}
+      {!isDockVisible && (
+        <button 
+          className="show-dock-button"
+          onClick={handleShowDock}
+          title="Show dock"
+        >
+          <VscCircleLarge size={20} />
+        </button>
+      )}
 
       {/* Floating Footer */}
       <Footer />
