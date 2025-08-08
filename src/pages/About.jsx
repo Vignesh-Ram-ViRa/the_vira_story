@@ -18,14 +18,52 @@ import { getLanguageContent } from '../utils/language';
 import Stack from '../components/3d/Stack';
 import HobbyModal from '../components/organisms/HobbyModal/HobbyModal';
 
+// Import asset constants
+import { HOBBY_DATA } from '../constants/hobbyData';
+
 import './About.css';
 
 /**
- * About Me page - Personal and warm presentation
- * Focus on personality, hobbies, and personal achievements
+ * About Page - Personal Portfolio and Interactive Hobby Showcase
+ * 
+ * Features a warm, personal presentation with interactive 3D hobby previews.
+ * Dynamically generates preview cards from centralized hobby data.
+ * 
+ * Key Features:
+ * - Interactive hobby cards with Stack 3D component
+ * - Dynamic data sourcing from HOBBY_DATA constants
+ * - Framer Motion animations and transitions
+ * - Modal integration for detailed hobby galleries
+ * - Multi-language content support
+ * - Responsive layout with mobile optimization
+ * 
+ * Architecture:
+ * - Imports HOBBY_DATA for content consistency
+ * - Generates preview cards dynamically (first 4 images per category)
+ * - Maintains single source of truth for all hobby content
+ * - Seamlessly integrates with HobbyModal for detailed views
  */
 const About = () => {
   const content = getLanguageContent();
+  
+  // Create hobby cards data from HOBBY_DATA (first 4 images of each category)
+  const hobbyCardsData = {
+    art: HOBBY_DATA.sketching.images.slice(0, 4).map(item => ({
+      id: item.id,
+      img: item.src,
+      alt: item.title
+    })),
+    travel: HOBBY_DATA.travel.images.slice(0, 4).map(item => ({
+      id: item.id,
+      img: item.src,
+      alt: item.title
+    })),
+    photography: HOBBY_DATA.photography.images.slice(0, 4).map(item => ({
+      id: item.id,
+      img: item.src,
+      alt: item.title
+    }))
+  };
   
   // Modal state for hobby galleries
   const [selectedHobby, setSelectedHobby] = useState(null);
@@ -194,12 +232,7 @@ const About = () => {
                   sensitivity={150}
                   cardDimensions={{ width: 120, height: 120 }}
                   sendToBackOnClick={false}
-                  cardsData={[
-                    { id: 1, img: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=500&auto=format", alt: "Sketch placeholder" },
-                    { id: 2, img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=500&auto=format", alt: "Landscape drawing" },
-                    { id: 3, img: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=500&auto=format", alt: "Abstract art" },
-                    { id: 4, img: "https://images.unsplash.com/photo-1594736797933-d0c8c986d1e8?q=80&w=500&auto=format", alt: "Character study" }
-                  ]}
+                  cardsData={hobbyCardsData.art}
                 />
               </div>
               <span className="hobby-status">Art Portfolio</span>
@@ -224,12 +257,7 @@ const About = () => {
                   sensitivity={150}
                   cardDimensions={{ width: 120, height: 120 }}
                   sendToBackOnClick={false}
-                  cardsData={[
-                    { id: 1, img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=500&auto=format", alt: "Mountain lake" },
-                    { id: 2, img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=500&auto=format", alt: "Alpine valley" },
-                    { id: 3, img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=500&auto=format", alt: "Forest trail" },
-                    { id: 4, img: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=500&auto=format", alt: "Ocean coast" }
-                  ]}
+                  cardsData={hobbyCardsData.travel}
                 />
               </div>
               <span className="hobby-status">Journey Memories</span>
@@ -254,12 +282,7 @@ const About = () => {
                   sensitivity={150}
                   cardDimensions={{ width: 120, height: 120 }}
                   sendToBackOnClick={false}
-                  cardsData={[
-                    { id: 1, img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=500&auto=format", alt: "Mountain landscape" },
-                    { id: 2, img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=500&auto=format", alt: "Forest path" },
-                    { id: 3, img: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=500&auto=format", alt: "Ocean waves" },
-                    { id: 4, img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=500&auto=format", alt: "Desert sunset" }
-                  ]}
+                  cardsData={hobbyCardsData.photography}
                 />
               </div>
               <span className="hobby-status">Interactive Gallery</span>

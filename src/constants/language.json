@@ -410,12 +410,6 @@
           "description": "AI pair programmer that suggests code and entire functions"
         },
         {
-          "name": "Tabnine",
-          "icon": "tabnine",
-          "category": "vibeCoding",
-          "description": "AI code completion tool that predicts and suggests code patterns"
-        },
-        {
           "name": "ChatGPT",
           "icon": "openai",
           "category": "vibeCoding",

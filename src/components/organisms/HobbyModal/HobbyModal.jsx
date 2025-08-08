@@ -2,46 +2,29 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { VscClose, VscChevronLeft, VscChevronRight } from 'react-icons/vsc';
 import MagicBento from '../../3d/MagicBento';
+import { HOBBY_DATA } from '../../../constants/hobbyData';
 import './HobbyModal.css';
 
-const hobbyData = {
-  photography: {
-    title: "Photography Gallery",
-    description: "Capturing life's beautiful moments through the lens",
-    images: [
-      { id: 1, src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format", title: "Mountain Landscape", location: "Swiss Alps" },
-      { id: 2, src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format", title: "Forest Path", location: "Black Forest, Germany" },
-      { id: 3, src: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format", title: "Ocean Waves", location: "Pacific Coast" },
-      { id: 4, src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format", title: "Desert Sunset", location: "Sahara Desert" },
-      { id: 5, src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800&auto=format", title: "Alpine Lake", location: "Canadian Rockies" },
-      { id: 6, src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format", title: "Valley View", location: "Yosemite" }
-    ]
-  },
-  sketching: {
-    title: "Art Portfolio",
-    description: "Freehand drawings and creative expressions",
-    images: [
-      { id: 1, src: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=800&auto=format", title: "Sketch Placeholder", medium: "Pencil on Paper" },
-      { id: 2, src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&auto=format", title: "Landscape Drawing", medium: "Charcoal" },
-      { id: 3, src: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=800&auto=format", title: "Abstract Art", medium: "Mixed Media" },
-      { id: 4, src: "https://images.unsplash.com/photo-1594736797933-d0c8c986d1e8?q=80&w=800&auto=format", title: "Character Study", medium: "Ink" },
-      { id: 5, src: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=800&auto=format", title: "Life Drawing", medium: "Graphite" },
-      { id: 6, src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&auto=format", title: "Still Life", medium: "Pastel" }
-    ]
-  },
-  travel: {
-    title: "Travel Memories",
-    description: "Adventures and cultures from around the world",
-    images: [
-      { id: 1, src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800&auto=format", title: "Mountain Adventure", country: "Switzerland" },
-      { id: 2, src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format", title: "Alpine Journey", country: "Austria" },
-      { id: 3, src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format", title: "Forest Exploration", country: "Germany" },
-      { id: 4, src: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format", title: "Coastal Wandering", country: "Portugal" },
-      { id: 5, src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format", title: "Desert Safari", country: "Morocco" },
-      { id: 6, src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800&auto=format", title: "Lake Serenity", country: "Canada" }
-    ]
-  }
-};
+/**
+ * HobbyModal - Interactive Portfolio Gallery Component
+ * 
+ * Displays hobby portfolios (art, photography, travel) in an immersive modal interface.
+ * Features smooth animations, image viewer, and 3D grid layouts.
+ * 
+ * Props:
+ * - isOpen: Boolean to control modal visibility
+ * - hobbyType: String key ('sketching', 'photography', 'travel')
+ * - onClose: Function to handle modal closing
+ * 
+ * Features:
+ * - Image lightbox with navigation
+ * - Framer Motion animations
+ * - MagicBento 3D grid layout
+ * - Responsive design
+ * - Keyboard navigation support
+ * 
+ * Data Source: Imports from HOBBY_DATA constants for maintainable content management
+ */
 
 export default function HobbyModal({ isOpen, hobbyType, onClose }) {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -49,7 +32,7 @@ export default function HobbyModal({ isOpen, hobbyType, onClose }) {
 
   if (!isOpen || !hobbyType) return null;
 
-  const hobby = hobbyData[hobbyType];
+  const hobby = HOBBY_DATA[hobbyType];
   const images = hobby?.images || [];
 
   const openImageViewer = (image, index) => {

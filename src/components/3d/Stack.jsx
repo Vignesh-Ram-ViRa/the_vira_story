@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useState } from "react";
+import { IMAGES } from "../../constants/assetReferences";
 import "./Stack.css";
 
 function CardRotate({ children, onSendToBack, sensitivity }) {
@@ -44,28 +45,7 @@ export default function Stack({
   sendToBackOnClick = false
 }) {
   // Default placeholder images for photography
-  const defaultImages = [
-    { 
-      id: 1, 
-      img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=500&auto=format",
-      alt: "Mountain landscape photography"
-    },
-    { 
-      id: 2, 
-      img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=500&auto=format",
-      alt: "Forest path photography"
-    },
-    { 
-      id: 3, 
-      img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=500&auto=format",
-      alt: "Sunset photography"
-    },
-    { 
-      id: 4, 
-      img: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=500&auto=format",
-      alt: "Ocean waves photography"
-    }
-  ];
+  const defaultImages = IMAGES.COMPONENT_IMAGES.STACK_CARDS;
 
   const [cards, setCards] = useState(
     cardsData.length ? cardsData : defaultImages

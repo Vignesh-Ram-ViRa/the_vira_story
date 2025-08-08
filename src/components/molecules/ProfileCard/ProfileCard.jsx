@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback, useMemo } from "react";
 import { getLanguageContent } from '../../../utils/language';
+import { IMAGES } from '../../../constants/assetReferences';
 import "./ProfileCard.css";
 
 const DEFAULT_BEHIND_GRADIENT =
@@ -42,8 +43,8 @@ const ProfileCardComponent = ({
   
   // Adapted props from our data
   const props = {
-    avatarUrl: "/assets/images/profile-avatar.jpeg", // Your actual profile image
-    miniAvatarUrl: "/assets/images/profile-avatar.jpeg", // Same image for mini avatar
+    avatarUrl: IMAGES.PROFILE.AVATAR, // Your actual profile image from GitHub LFS
+    miniAvatarUrl: IMAGES.PROFILE.MINI_AVATAR, // Same image for mini avatar
     name: personalInfo.name,
     title: personalInfo.title,
     handle: personalInfo.handle,
