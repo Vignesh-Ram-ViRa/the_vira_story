@@ -85,16 +85,16 @@ const Career = () => {
           <div className="summary-card">
             <h3 className="summary-title">Professional Journey</h3>
             <p className="summary-text">
-              {career.summary || "Over 9 years of diverse experience spanning across multiple technologies and domains, with a strong focus on full-stack development and continuous learning."}
+              {career.summary}
             </p>
             
             <div className="career-stats">
               <div className="stat-item">
-                <span className="stat-number">{career.experiences.length}+</span>
+                <span className="stat-number">2</span>
                 <span className="stat-label">Companies</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">9+</span>
+                <span className="stat-number">10+</span>
                 <span className="stat-label">Years Experience</span>
               </div>
               <div className="stat-item">

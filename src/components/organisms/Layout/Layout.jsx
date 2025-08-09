@@ -147,7 +147,7 @@ const Layout = ({ children }) => {
       isActive: currentPage === 'home'
     },
     {
-      icon: <VscAccount size={16} />,
+      icon: <VscPerson size={16} />,
       label: content.navigation.career,
       path: '/career',
       isActive: currentPage === 'career'
@@ -181,7 +181,7 @@ const Layout = ({ children }) => {
       className: currentPage === 'home' ? 'dock-item-active' : ''
     },
     {
-      icon: <VscAccount size={20} />,
+      icon: <VscPerson size={20} />,
       label: content.navigation.career,
       onClick: () => handleNavigation('/career'),
       className: currentPage === 'career' ? 'dock-item-active' : ''
@@ -254,7 +254,7 @@ const Layout = ({ children }) => {
             aria-label="Open contact"
             title="Contact me"
           >
-            <VscPerson size={20} />
+            <VscAccount size={20} />
           </button>
           
           <button 

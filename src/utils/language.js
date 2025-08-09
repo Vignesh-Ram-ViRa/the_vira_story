@@ -1,8 +1,9 @@
-import languageContent from '../constants/language.json';
+import LANGUAGE_CONTENT from '../constants/language.js';
 
 /**
  * Language utility for accessing externalized static content
  * Provides a safe way to get text content with fallbacks
+ * Now imports from language.js which uses centralized personal constants
  */
 
 /**
@@ -10,11 +11,11 @@ import languageContent from '../constants/language.json';
  * @returns {Object} Complete language content
  */
 export const getLanguageContent = () => {
-  return languageContent;
+  return LANGUAGE_CONTENT;
 };
 
 /**
- * Get text content by path from language.json
+ * Get text content by path from language.js
  * @param {string} path - Dot notation path to the content (e.g., 'hero.title')
  * @param {string} fallback - Fallback text if path is not found
  * @returns {string} The content text or fallback
@@ -22,7 +23,7 @@ export const getLanguageContent = () => {
 export const getText = (path, fallback = 'Text not found') => {
   try {
     const keys = path.split('.');
-    let content = languageContent;
+    let content = LANGUAGE_CONTENT;
     
     for (const key of keys) {
       if (content && typeof content === 'object' && key in content) {
@@ -57,7 +58,7 @@ export const getTexts = (paths) => {
  * @returns {Object} Navigation texts
  */
 export const getNavigation = () => {
-  return languageContent.navigation;
+  return LANGUAGE_CONTENT.navigation;
 };
 
 /**
@@ -65,7 +66,7 @@ export const getNavigation = () => {
  * @returns {Object} Hero section texts
  */
 export const getHero = () => {
-  return languageContent.hero;
+  return LANGUAGE_CONTENT.hero;
 };
 
 /**
@@ -73,7 +74,7 @@ export const getHero = () => {
  * @returns {Object} About section texts
  */
 export const getAbout = () => {
-  return languageContent.about;
+  return LANGUAGE_CONTENT.about;
 };
 
 /**
@@ -81,7 +82,7 @@ export const getAbout = () => {
  * @returns {Object} Projects section texts
  */
 export const getProjects = () => {
-  return languageContent.projects;
+  return LANGUAGE_CONTENT.projects;
 };
 
 /**
@@ -89,7 +90,7 @@ export const getProjects = () => {
  * @returns {Object} Contact section texts
  */
 export const getContact = () => {
-  return languageContent.contact;
+  return LANGUAGE_CONTENT.contact;
 };
 
 /**
@@ -97,7 +98,7 @@ export const getContact = () => {
  * @returns {Object} Footer texts
  */
 export const getFooter = () => {
-  return languageContent.footer;
+  return LANGUAGE_CONTENT.footer;
 };
 
 /**
@@ -105,7 +106,7 @@ export const getFooter = () => {
  * @returns {Object} Theme-related texts
  */
 export const getThemes = () => {
-  return languageContent.themes;
+  return LANGUAGE_CONTENT.themes;
 };
 
 /**
@@ -113,7 +114,7 @@ export const getThemes = () => {
  * @returns {Object} Common utility texts
  */
 export const getCommon = () => {
-  return languageContent.common;
+  return LANGUAGE_CONTENT.common;
 };
 
 const languageUtils = {

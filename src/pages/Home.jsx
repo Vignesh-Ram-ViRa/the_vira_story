@@ -16,6 +16,7 @@ import {
 } from 'react-icons/vsc';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { getLanguageContent } from '../utils/language';
+import { IMAGES } from '../constants/assetReferences';
 import HobbyModal from '../components/organisms/HobbyModal/HobbyModal';
 import LightRays from '../components/3d/LightRays';
 import './Home.css';
@@ -214,7 +215,7 @@ const Home = () => {
               className="access-card primary"
               variants={cardVariants}
               whileHover="hover"
-              onClick={() => window.open('/resume.pdf', '_blank')}
+              onClick={() => window.open(IMAGES.DOCUMENTS.RESUME, '_blank')}
             >
               <VscCloudDownload className="access-icon" />
               <div className="access-content">

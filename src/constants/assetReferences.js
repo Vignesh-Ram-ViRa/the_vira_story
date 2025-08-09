@@ -3,12 +3,14 @@
  * 
  * This file manages all image URLs, external links, and asset configurations.
  * Uses GitHub LFS for large image hosting and provides fallback URLs.
+ * Now imports personal constants to ensure consistency.
  * 
  * Architecture:
  * - GitHub LFS URLs for production images
  * - Unsplash fallbacks for development/placeholder images
  * - Generic naming convention (ART_1, PHOTO_1, TRAVEL_1)
  * - Organized by content category (Art, Photography, Travel)
+ * - Personal links imported from centralised constants
  * 
  * Usage:
  * import { IMAGES } from './assetReferences';
@@ -20,11 +22,16 @@
  * 3. Update corresponding hobbyData.js entry
  */
 
+import { SOCIAL_LINKS, PERSONAL_INFO } from './personalConstants';
+
 // GitHub LFS Base URL for your assets
 const GITHUB_LFS_BASE = "https://media.githubusercontent.com/media/Vignesh-Ram-ViRa/vira_assets/refs/heads/main/public/assets/images";
 
 // GitHub Raw Base URL (for smaller files)
 const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/Vignesh-Ram-ViRa/vira_assets/main/public/assets/images";
+
+// GitHub Raw Base URL for documents
+const GITHUB_DOCS_BASE = "https://raw.githubusercontent.com/Vignesh-Ram-ViRa/vira_assets/main/public/assets/files";
 
 // Fallback placeholder URLs for Stack component (keeping minimal fallbacks for 3D components)
 const FALLBACK_PLACEHOLDERS = {
@@ -88,23 +95,29 @@ export const IMAGES = {
       { id: 4, img: FALLBACK_PLACEHOLDERS.NATURE_3, alt: "Ocean Coast" },
     ],
   },
+
+  // Documents
+  DOCUMENTS: {
+    RESUME: `${GITHUB_DOCS_BASE}/resume.pdf`, // Note: Convert DOCX to PDF for web compatibility
+  },
 };
 
-// External links
+// External links - now using centralized personal constants
 export const EXTERNAL_LINKS = {
-  GITHUB: 'https://github.com/Vignesh-Ram-ViRa',
-  LINKEDIN: 'https://linkedin.com/in/vignesh-ram-vira',
-  EMAIL: 'mailto:vignesh@vira.dev',
+  GITHUB: SOCIAL_LINKS.GITHUB.PROFILE_URL,
+  LINKEDIN: SOCIAL_LINKS.LINKEDIN.PROFILE_URL,
+  EMAIL: SOCIAL_LINKS.EMAIL.MAILTO_URL,
   
   // Social media links
-  TWITTER: 'https://twitter.com/vigneshramvira',
-  INSTAGRAM: 'https://instagram.com/vignesh_ram_vira',
+  TWITTER: SOCIAL_LINKS.TWITTER,
+  INSTAGRAM: SOCIAL_LINKS.INSTAGRAM,
 };
 
 // Asset URLs and CDN configurations
 export const ASSET_URLS = {
   GITHUB_LFS_BASE,
   GITHUB_RAW_BASE,
+  GITHUB_DOCS_BASE,
   CDN_BASE: process.env.REACT_APP_CDN_URL || '',
   UPLOAD_BASE: process.env.REACT_APP_UPLOAD_URL || '/uploads',
 };

@@ -9,11 +9,11 @@ import {
   VscDatabase,
   VscBeaker
 } from 'react-icons/vsc';
-import languageData from '../constants/language.json';
+import LANGUAGE_CONTENT from '../constants/language.js';
 import './Certifications.css';
 
 const Certifications = () => {
-  const { certifications } = languageData;
+  const { certifications } = LANGUAGE_CONTENT;
 
   // Icon mapping for different certification types
   const iconMap = {

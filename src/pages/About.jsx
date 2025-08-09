@@ -20,6 +20,12 @@ import HobbyModal from '../components/organisms/HobbyModal/HobbyModal';
 
 // Import asset constants
 import { HOBBY_DATA } from '../constants/hobbyData';
+import { 
+  HOBBY_EXTERNAL_LINKS, 
+  HOBBY_STATUS_TEXT, 
+  HOBBY_CONTENT,
+  ABOUT_SECTION_CONTENT 
+} from '../constants/externalLinks';
 
 import './About.css';
 
@@ -120,11 +126,10 @@ const About = () => {
       <motion.section className="about-hero" variants={itemVariants}>
         <div className="hero-content">
           <motion.h1 className="about-title">
-            The Person Behind the Code
+            {ABOUT_SECTION_CONTENT.HERO.title}
           </motion.h1>
           <motion.p className="about-tagline">
-            Welcome to my personal space! Here's where the professional meets the personal,
-            and where you get to know the real me beyond the developer.
+            {ABOUT_SECTION_CONTENT.HERO.subtitle}
           </motion.p>
         </div>
       </motion.section>
@@ -134,7 +139,7 @@ const About = () => {
         
         {/* Personal Details Card */}
         <motion.section className="personal-details-card" variants={cardVariants}>
-          <div className="card-header">
+          <div className="section-header">
             <VscHeart className="card-icon" />
             <h2>Personal Details</h2>
           </div>
@@ -178,27 +183,27 @@ const About = () => {
         <motion.section className="achievements-section" variants={cardVariants}>
           <div className="section-header">
             <VscMortarBoard className="section-icon" />
-            <h2>Creative Achievements</h2>
-            <p>Beyond the technical world</p>
+            <h2>{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.title}</h2>
+            <p>{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.subtitle}</p>
           </div>
           <div className="achievements-grid">
             <div className="achievement-card art">
-              <div className="achievement-icon">🎨</div>
-              <h3>Freehand Drawing</h3>
-              <p>Senior Grade Certificate</p>
-              <span className="achievement-badge">Art & Design</span>
+              <div className="achievement-icon">{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.ART.icon}</div>
+              <h3>{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.ART.title}</h3>
+              <p>{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.ART.description}</p>
+              <span className="achievement-badge">{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.ART.badge}</span>
             </div>
             <div className="achievement-card typing">
-              <div className="achievement-icon">⌨️</div>
-              <h3>Typewriting</h3>
-              <p>Junior Grade Certificate</p>
-              <span className="achievement-badge">Technical Skill</span>
+              <div className="achievement-icon">{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.TYPING.icon}</div>
+              <h3>{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.TYPING.title}</h3>
+              <p>{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.TYPING.description}</p>
+              <span className="achievement-badge">{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.TYPING.badge}</span>
             </div>
             <div className="achievement-card language">
-              <div className="achievement-icon">🇮🇳</div>
-              <h3>Hindi Language</h3>
-              <p>Rastrabasha Praveen Degree</p>
-              <span className="achievement-badge">Cultural</span>
+              <div className="achievement-icon">{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.LANGUAGE.icon}</div>
+              <h3>{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.LANGUAGE.title}</h3>
+              <p>{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.LANGUAGE.description}</p>
+              <span className="achievement-badge">{ABOUT_SECTION_CONTENT.ACHIEVEMENTS.items.LANGUAGE.badge}</span>
             </div>
           </div>
         </motion.section>
@@ -207,8 +212,8 @@ const About = () => {
         <motion.section className="hobbies-section" variants={cardVariants}>
           <div className="section-header">
             <VscSymbolEvent className="section-icon" />
-            <h2>My Hobbies & Interests</h2>
-            <p>What keeps me inspired outside of work</p>
+            <h2>{ABOUT_SECTION_CONTENT.HOBBIES.title}</h2>
+            <p>{ABOUT_SECTION_CONTENT.HOBBIES.subtitle}</p>
           </div>
           
           <div className="hobbies-grid">
@@ -217,13 +222,12 @@ const About = () => {
               className="hobby-card featured sketching"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-              onClick={() => openHobbyModal('sketching')}
             >
               <div className="hobby-header">
                 <VscEdit className="hobby-icon" />
                 <div>
-                  <h3>Sketching</h3>
-                  <p>Freehand art and creative drawings</p>
+                  <h3>{HOBBY_CONTENT.SKETCHING.title}</h3>
+                  <p>{HOBBY_CONTENT.SKETCHING.description}</p>
                 </div>
               </div>
               <div className="hobby-3d-preview">
@@ -231,24 +235,28 @@ const About = () => {
                   randomRotation={true}
                   sensitivity={150}
                   cardDimensions={{ width: 120, height: 120 }}
-                  sendToBackOnClick={false}
+                  sendToBackOnClick={true}
                   cardsData={hobbyCardsData.art}
                 />
               </div>
-              <span className="hobby-status">Art Portfolio</span>
+              <span 
+                className="hobby-status clickable" 
+                onClick={() => openHobbyModal('sketching')}
+              >
+                {HOBBY_STATUS_TEXT.ART_PORTFOLIO}
+              </span>
             </motion.div>
 
             <motion.div 
               className="hobby-card featured travel"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-              onClick={() => openHobbyModal('travel')}
             >
               <div className="hobby-header">
                 <VscLocation className="hobby-icon" />
                 <div>
-                  <h3>Travel</h3>
-                  <p>Exploring new places and cultures</p>
+                  <h3>{HOBBY_CONTENT.TRAVEL.title}</h3>
+                  <p>{HOBBY_CONTENT.TRAVEL.description}</p>
                 </div>
               </div>
               <div className="hobby-3d-preview">
@@ -256,24 +264,28 @@ const About = () => {
                   randomRotation={true}
                   sensitivity={150}
                   cardDimensions={{ width: 120, height: 120 }}
-                  sendToBackOnClick={false}
+                  sendToBackOnClick={true}
                   cardsData={hobbyCardsData.travel}
                 />
               </div>
-              <span className="hobby-status">Journey Memories</span>
+              <span 
+                className="hobby-status clickable" 
+                onClick={() => openHobbyModal('travel')}
+              >
+                {HOBBY_STATUS_TEXT.JOURNEY_MEMORIES}
+              </span>
             </motion.div>
 
             <motion.div 
               className="hobby-card featured photography"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-              onClick={() => openHobbyModal('photography')}
             >
               <div className="hobby-header">
                 <VscDeviceCameraVideo className="hobby-icon" />
                 <div>
-                  <h3>Photography</h3>
-                  <p>Capturing life's beautiful moments</p>
+                  <h3>{HOBBY_CONTENT.PHOTOGRAPHY.title}</h3>
+                  <p>{HOBBY_CONTENT.PHOTOGRAPHY.description}</p>
                 </div>
               </div>
               <div className="hobby-3d-preview">
@@ -281,40 +293,65 @@ const About = () => {
                   randomRotation={true}
                   sensitivity={150}
                   cardDimensions={{ width: 120, height: 120 }}
-                  sendToBackOnClick={false}
+                  sendToBackOnClick={true}
                   cardsData={hobbyCardsData.photography}
                 />
               </div>
-              <span className="hobby-status">Interactive Gallery</span>
+              <span 
+                className="hobby-status clickable" 
+                onClick={() => openHobbyModal('photography')}
+              >
+                {HOBBY_STATUS_TEXT.INTERACTIVE_GALLERY}
+              </span>
             </motion.div>
 
             {/* Simple Hobby Cards */}
             <div className="hobby-card simple reading">
               <VscBook className="hobby-icon" />
-              <h3>Reading</h3>
-              <p>Books and continuous learning</p>
-              <span className="hobby-status coming-soon">Coming Soon</span>
+              <h3>{HOBBY_CONTENT.READING.title}</h3>
+              <p>{HOBBY_CONTENT.READING.description}</p>
+              <span 
+                className="hobby-status clickable external-link" 
+                onClick={() => window.open(HOBBY_EXTERNAL_LINKS.BOOKWORM, '_blank')}
+              >
+                {HOBBY_STATUS_TEXT.BOOKWORM}
+              </span>
             </div>
 
             <div className="hobby-card simple movies">
               <VscDeviceCameraVideo className="hobby-icon" />
-              <h3>Movies</h3>
-              <p>Cinema and storytelling</p>
-              <span className="hobby-status coming-soon">Coming Soon</span>
+              <h3>{HOBBY_CONTENT.MOVIES.title}</h3>
+              <p>{HOBBY_CONTENT.MOVIES.description}</p>
+              <span 
+                className="hobby-status clickable external-link" 
+                onClick={() => window.open(HOBBY_EXTERNAL_LINKS.FILMFRENZY, '_blank')}
+              >
+                {HOBBY_STATUS_TEXT.FILMFRENZY}
+              </span>
             </div>
 
             <div className="hobby-card simple anime">
               <VscSymbolEvent className="hobby-icon" />
-              <h3>Anime</h3>
-              <p>Japanese animation and culture</p>
-              <span className="hobby-status coming-soon">Coming Soon</span>
+              <h3>{HOBBY_CONTENT.ANIME.title}</h3>
+              <p>{HOBBY_CONTENT.ANIME.description}</p>
+              <span 
+                className="hobby-status clickable external-link" 
+                onClick={() => window.open(HOBBY_EXTERNAL_LINKS.OTAKUHUB, '_blank')}
+              >
+                {HOBBY_STATUS_TEXT.OTAKUHUB}
+              </span>
             </div>
 
             <div className="hobby-card simple badminton">
               <VscGame className="hobby-icon" />
-              <h3>Badminton</h3>
-              <p>Staying active and competitive</p>
-              <span className="hobby-status coming-soon">Coming Soon</span>
+              <h3>{HOBBY_CONTENT.BADMINTON.title}</h3>
+              <p>{HOBBY_CONTENT.BADMINTON.description}</p>
+              <span 
+                className="hobby-status clickable external-link" 
+                onClick={() => window.open(HOBBY_EXTERNAL_LINKS.BADMINTON_RULES, '_blank')}
+              >
+                {HOBBY_STATUS_TEXT.BADMINTON_RULES}
+              </span>
             </div>
           </div>
         </motion.section>

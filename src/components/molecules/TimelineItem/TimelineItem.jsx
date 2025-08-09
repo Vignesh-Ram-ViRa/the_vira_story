@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { VscCalendar, VscLocation, VscAccount, VscCode, VscMortarBoard, VscBriefcase } from 'react-icons/vsc';
+import { VscCalendar, VscLocation, VscPerson, VscCode, VscMortarBoard, VscBriefcase } from 'react-icons/vsc';
 import './TimelineItem.css';
 
 /**
@@ -147,7 +147,7 @@ const TimelineItem = ({ experience, index, isLast }) => {
           <div className="timeline-details">
             {experience.teamSize && (
               <div className="detail-row">
-                <VscAccount className="detail-icon" />
+                <VscPerson className="detail-icon" />
                 <span className="detail-text">Team Size: {experience.teamSize}</span>
               </div>
             )}
